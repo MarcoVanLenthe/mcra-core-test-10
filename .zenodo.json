@@ -1,0 +1,43 @@
+{
+    "creators": [
+        {
+            "affiliation": "Wageningen University & Research",
+            "name": "De Boer, Waldo"
+        },
+        {
+            "affiliation": "Wageningen University & Research",
+            "name": "Engel, Jasper"
+        },
+        {
+            "affiliation": "Wageningen University & Research",
+            "name": "Kruisselbrink, Johannes"
+        },
+        {
+            "orcid": "0000-0001-8335-5314",
+            "affiliation": "Wageningen University & Research",
+            "name": "Van Lenthe, Marco"
+        },
+        {
+            "affiliation": "Wageningen University & Research",
+            "name": "Van Voorthuijsen, Tijmen"
+        }
+    ],
+    "title": "MCRA 10 Test Utils Only",
+    "related_identifiers": [
+        {
+            "scheme": "doi",
+            "identifier": "10.2903/sp.efsa.2021.EN-6515",
+            "relation": "describes",
+            "resource_type": "report"
+        }
+    ],
+    "keywords": [
+        "Risk assessment",
+        "Food",
+        "Consumption",
+        "Probabilistic",
+        "Hazard",
+        "Risk",
+        "RIVM"
+    ]
+}
