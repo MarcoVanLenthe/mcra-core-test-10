@@ -160,7 +160,7 @@ namespace MCRA.Utils {
             _columns = A[0].Length;
             for (int i = 0; i < _rows; i++) {
                 if (A[i].Length != _columns) {
-                    throw new System.ArgumentException("All rows must have the same length.");
+                    throw new ArgumentException("All rows must have the same length.");
                 }
             }
             _values = A;
@@ -195,12 +195,12 @@ namespace MCRA.Utils {
         /// <summary>Construct a matrix from a one-dimensional packed array</summary>
         /// <param name="vals">One-dimensional array of doubles, packed by columns (ala Fortran).</param>
         /// <param name="m">Number of rows.</param>
-        /// <exception cref="System.ArgumentException">Array length must be a multiple of m.</exception>
+        /// <exception cref="ArgumentException">Array length must be a multiple of m.</exception>
         public GeneralMatrix(double[] vals, int m) {
             _rows = m;
             _columns = (m != 0 ? vals.Length / m : 0);
             if (m * _columns != vals.Length) {
-                throw new System.ArgumentException("Array length must be a multiple of m.");
+                throw new ArgumentException("Array length must be a multiple of m.");
             }
             _values = new double[m][];
             Enumerable.Range(0, _rows)
@@ -463,7 +463,7 @@ namespace MCRA.Utils {
         /// Make a deep copy of a matrix while inserting NaN 
         /// </summary>
         /// <param name="replace">Specifies which elements must be set to NaN.</param>
-        /// <exception cref="System.ArgumentException">Matrices must be compatible
+        /// <exception cref="ArgumentException">Matrices must be compatible
         /// </exception>
         public GeneralMatrix NanInsert(GeneralMatrix replace) {
             var x = new GeneralMatrix(_rows, _columns);
@@ -501,7 +501,7 @@ namespace MCRA.Utils {
         /// </param>
         /// <returns>     A(i,j)
         /// </returns>
-        /// <exception cref="System.IndexOutOfRangeException">  
+        /// <exception cref="IndexOutOfRangeException">  
         /// </exception>
         public double GetElement(int i, int j) {
             return _values[i][j];
@@ -513,7 +513,7 @@ namespace MCRA.Utils {
         /// <param name="j0">Initial column index</param>
         /// <param name="j1">Final column index</param>
         /// <returns>A(i0:i1,j0:j1)</returns>
-        /// <exception cref="System.IndexOutOfRangeException">Submatrix indices</exception>
+        /// <exception cref="IndexOutOfRangeException">Submatrix indices</exception>
         public GeneralMatrix GetSubMatrix(int i0, int i1, int j0, int j1) {
             GeneralMatrix X = new GeneralMatrix(i1 - i0 + 1, j1 - j0 + 1);
             double[][] B = X.Array;
@@ -523,8 +523,8 @@ namespace MCRA.Utils {
                         B[i - i0][j - j0] = _values[i][j];
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
             return X;
         }
@@ -535,7 +535,7 @@ namespace MCRA.Utils {
         /// <param name="r">Array of row indices.</param>
         /// <param name="c">Array of column indices.</param>
         /// <returns>A(r(:),c(:))</returns>
-        /// <exception cref="System.IndexOutOfRangeException">Submatrix indices</exception>
+        /// <exception cref="IndexOutOfRangeException">Submatrix indices</exception>
         public GeneralMatrix GetMatrix(int[] r, int[] c) {
             GeneralMatrix X = new GeneralMatrix(r.Length, c.Length);
             double[][] B = X.Array;
@@ -545,8 +545,8 @@ namespace MCRA.Utils {
                         B[i][j] = _values[r[i]][c[j]];
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
             return X;
         }
@@ -558,7 +558,7 @@ namespace MCRA.Utils {
         /// <param name="i1">Final row index</param>
         /// <param name="c">Array of column indices.</param>
         /// <returns>A(i0:i1,c(:))</returns>
-        /// <exception cref="System.IndexOutOfRangeException">Submatrix indices</exception>
+        /// <exception cref="IndexOutOfRangeException">Submatrix indices</exception>
         public GeneralMatrix GetMatrix(int i0, int i1, int[] c) {
             GeneralMatrix X = new GeneralMatrix(i1 - i0 + 1, c.Length);
             double[][] B = X.Array;
@@ -568,8 +568,8 @@ namespace MCRA.Utils {
                         B[i - i0][j] = _values[i][c[j]];
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
             return X;
         }
@@ -581,7 +581,7 @@ namespace MCRA.Utils {
         /// <param name="j0">Initial column index</param>
         /// <param name="j1">Final column index.</param>
         /// <returns>A(r(:),j0:j1)</returns>
-        /// <exception cref="System.IndexOutOfRangeException">Submatrix indices</exception>
+        /// <exception cref="IndexOutOfRangeException">Submatrix indices</exception>
         public GeneralMatrix GetMatrix(int[] r, int j0, int j1) {
             GeneralMatrix X = new GeneralMatrix(r.Length, j1 - j0 + 1);
             double[][] B = X.Array;
@@ -591,8 +591,8 @@ namespace MCRA.Utils {
                         B[i][j - j0] = _values[r[i]][j];
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
             return X;
         }
@@ -603,7 +603,7 @@ namespace MCRA.Utils {
         /// <param name="i">Row index.</param>
         /// <param name="j">Column index.</param>
         /// <param name="s">A(i,j).</param>
-        /// <exception cref="System.IndexOutOfRangeException"></exception>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public void SetElement(int i, int j, double s) {
             _values[i][j] = s;
         }
@@ -619,7 +619,7 @@ namespace MCRA.Utils {
         /// </param>
         /// <param name="X">   A(i0:i1,j0:j1)
         /// </param>
-        /// <exception cref="System.IndexOutOfRangeException">  Submatrix indices
+        /// <exception cref="IndexOutOfRangeException">  Submatrix indices
         /// </exception>
         public void SetMatrix(int i0, int i1, int j0, int j1, GeneralMatrix X) {
             try {
@@ -628,8 +628,8 @@ namespace MCRA.Utils {
                         _values[i][j] = X.GetElement(i - i0, j - j0);
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
         }
 
@@ -640,7 +640,7 @@ namespace MCRA.Utils {
         /// </param>
         /// <param name="X">   A(r(:),c(:))
         /// </param>
-        /// <exception cref="System.IndexOutOfRangeException">  Submatrix indices
+        /// <exception cref="IndexOutOfRangeException">  Submatrix indices
         /// </exception>
         public void SetMatrix(int[] r, int[] c, GeneralMatrix X) {
             try {
@@ -649,8 +649,8 @@ namespace MCRA.Utils {
                         _values[r[i]][c[j]] = X.GetElement(i, j);
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
         }
 
@@ -663,7 +663,7 @@ namespace MCRA.Utils {
         /// </param>
         /// <param name="X">   A(r(:),j0:j1)
         /// </param>
-        /// <exception cref="System.IndexOutOfRangeException"> Submatrix indices
+        /// <exception cref="IndexOutOfRangeException"> Submatrix indices
         /// </exception>
         public void SetMatrix(int[] r, int j0, int j1, GeneralMatrix X) {
             try {
@@ -672,8 +672,8 @@ namespace MCRA.Utils {
                         _values[r[i]][j] = X.GetElement(i, j - j0);
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
         }
 
@@ -686,7 +686,7 @@ namespace MCRA.Utils {
         /// </param>
         /// <param name="X">   A(i0:i1,c(:))
         /// </param>
-        /// <exception cref="System.IndexOutOfRangeException">  Submatrix indices
+        /// <exception cref="IndexOutOfRangeException">  Submatrix indices
         /// </exception>
         public void SetMatrix(int i0, int i1, int[] c, GeneralMatrix X) {
             try {
@@ -695,8 +695,8 @@ namespace MCRA.Utils {
                         _values[i][c[j]] = X.GetElement(i - i0, j);
                     }
                 }
-            } catch (System.IndexOutOfRangeException e) {
-                throw new System.IndexOutOfRangeException("Submatrix indices", e);
+            } catch (IndexOutOfRangeException e) {
+                throw new IndexOutOfRangeException("Submatrix indices", e);
             }
         }
 
@@ -709,9 +709,9 @@ namespace MCRA.Utils {
             for (int j = 0; j < _columns; j++) {
                 double s = 0;
                 for (int i = 0; i < _rows; i++) {
-                    s += System.Math.Abs(_values[i][j]);
+                    s += Math.Abs(_values[i][j]);
                 }
-                f = System.Math.Max(f, s);
+                f = Math.Max(f, s);
             }
             return f;
         }
@@ -729,9 +729,9 @@ namespace MCRA.Utils {
             for (int i = 0; i < _rows; i++) {
                 double s = 0;
                 for (int j = 0; j < _columns; j++) {
-                    s += System.Math.Abs(_values[i][j]);
+                    s += Math.Abs(_values[i][j]);
                 }
-                f = System.Math.Max(f, s);
+                f = Math.Max(f, s);
             }
             return f;
         }
@@ -1053,10 +1053,10 @@ namespace MCRA.Utils {
         /// <summary>Linear algebraic matrix multiplication, A * B</summary>
         /// <param name="B">another matrix</param>
         /// <returns>Matrix product, A * B</returns>
-        /// <exception cref="System.ArgumentException">Matrix inner dimensions must agree.</exception>
+        /// <exception cref="ArgumentException">Matrix inner dimensions must agree.</exception>
         public GeneralMatrix MultiplyOld(GeneralMatrix B) {
             if (B._rows != _columns) {
-                throw new System.ArgumentException("GeneralMatrix inner dimensions must agree.");
+                throw new ArgumentException("GeneralMatrix inner dimensions must agree.");
             }
             GeneralMatrix X = new GeneralMatrix(_rows, B._columns);
             double[][] C = X.Array;
@@ -1079,7 +1079,7 @@ namespace MCRA.Utils {
 
         public GeneralMatrix Multiply(GeneralMatrix B) {
             if (B._rows != _columns) {
-                throw new System.ArgumentException("GeneralMatrix inner dimensions must agree.");
+                throw new ArgumentException("GeneralMatrix inner dimensions must agree.");
             }
             var X = new GeneralMatrix(_rows, B._columns);
             double[][] C = X.Array;
@@ -1259,7 +1259,7 @@ namespace MCRA.Utils {
         /// <returns>Sum of the diagonal elements.</returns>
         public double Trace() {
             double t = 0;
-            for (int i = 0; i < System.Math.Min(_rows, _columns); i++) {
+            for (int i = 0; i < Math.Min(_rows, _columns); i++) {
                 t += _values[i][i];
             }
             return t;
@@ -1381,7 +1381,7 @@ namespace MCRA.Utils {
         /// <param name="B"></param>
         private void CheckMatrixDimensions(GeneralMatrix B) {
             if (B._rows != _rows || B._columns != _columns) {
-                throw new System.ArgumentException("GeneralMatrix dimensions must agree.");
+                throw new ArgumentException("GeneralMatrix dimensions must agree.");
             }
         }
 
@@ -1434,7 +1434,7 @@ namespace MCRA.Utils {
         #endregion
 
         /// <summary>Clone the GeneralMatrix object.</summary>
-        public System.Object Clone() {
+        public object Clone() {
             return this.Copy();
         }
 
@@ -1492,7 +1492,7 @@ namespace MCRA.Utils {
         /// <returns></returns>
         public GeneralMatrix MultiplyRows(double[] factor) {
             if (factor.Length != this.RowDimension) {
-                throw new System.ArgumentException("GeneralMatrix dimensions must agree.");
+                throw new ArgumentException("GeneralMatrix dimensions must agree.");
             }
             var scaledMatrix = new GeneralMatrix(this.RowDimension, this.ColumnDimension);
             for (int i = 0; i < this.RowDimension; i++) {

@@ -24,7 +24,7 @@ namespace MCRA.Utils.PerformanceReporting {
             GC.WaitForPendingFinalizers();
             foreach (var order in orders) {
                 if (bytes > max) {
-                    return $"----- Memory usage: {Decimal.Divide(bytes, max):##.##} {order}";
+                    return $"----- Memory usage: {decimal.Divide(bytes, max):##.##} {order}";
                 }
                 max /= scale;
             }
@@ -43,7 +43,7 @@ namespace MCRA.Utils.PerformanceReporting {
             var max = (long)Math.Pow(scale, orders.Length - 1);
             foreach (var order in orders) {
                 if (bytes > max) {
-                    return $"----- Peak memory usage: {Decimal.Divide(bytes, max):##.##} {order}";
+                    return $"----- Peak memory usage: {decimal.Divide(bytes, max):##.##} {order}";
                 }
                 max /= scale;
             }

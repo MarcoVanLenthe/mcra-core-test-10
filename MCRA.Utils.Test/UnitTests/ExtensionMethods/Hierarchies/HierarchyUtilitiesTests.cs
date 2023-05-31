@@ -65,21 +65,21 @@ namespace MCRA.Utils.Test.UnitTests {
         [TestMethod]
         public void HierarchyUtilities_BuildHierarchyTest1() {
             var mockNodes = GetAllMockNodes();
-            var hierarchy = HierarchyUtilities.BuildHierarchy<string, MockTreeNode>(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
+            var hierarchy = HierarchyUtilities.BuildHierarchy(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
             Assert.AreEqual(1, hierarchy.Count());
         }
 
         [TestMethod]
         public void HierarchyUtilities_BuildHierarchyTestCycle() {
             var mockNodes = GetMockCycleDefinition();
-            var hierarchy = HierarchyUtilities.BuildHierarchy<string, MockTreeNode>(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
+            var hierarchy = HierarchyUtilities.BuildHierarchy(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
             Assert.AreEqual(0, hierarchy.Count());
         }
 
         [TestMethod]
         public void HierarchyUtilities_TestTraverse() {
             var mockNodes = GetAllMockNodes();
-            var hierarchy = HierarchyUtilities.BuildHierarchy<string, MockTreeNode>(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
+            var hierarchy = HierarchyUtilities.BuildHierarchy(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
             var allSubTrees = hierarchy.Traverse();
             Assert.AreEqual(6, allSubTrees.Count());
         }
@@ -87,7 +87,7 @@ namespace MCRA.Utils.Test.UnitTests {
         [TestMethod]
         public void HierarchyUtilities_TestTraverseExtended() {
             var mockNodes = GetAllMockNodesExtended();
-            var hierarchy = HierarchyUtilities.BuildHierarchy<string, MockTreeNode>(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
+            var hierarchy = HierarchyUtilities.BuildHierarchy(mockNodes, mockNodes, (MockTreeNode n) => n.Id, (MockTreeNode n) => n.IdParent);
             var allSubTrees = hierarchy.Traverse();
             var test = allSubTrees
                 .Where(n => n.Children.Any())

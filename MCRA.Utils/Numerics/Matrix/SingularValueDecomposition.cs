@@ -48,8 +48,8 @@ namespace MCRA.Utils {
             double[][] A = Arg.ArrayCopy;
             m = Arg.RowDimension;
             n = Arg.ColumnDimension;
-            int nu = System.Math.Min(m, n);
-            s = new double[System.Math.Min(m + 1, n)];
+            int nu = Math.Min(m, n);
+            s = new double[Math.Min(m + 1, n)];
             U = new double[m][];
             for (int i = 0; i < m; i++) {
                 U[i] = new double[nu];
@@ -66,9 +66,9 @@ namespace MCRA.Utils {
             // Reduce A to bidiagonal form, storing the diagonal elements
             // in s and the super-diagonal elements in e.
 
-            int nct = System.Math.Min(m - 1, n);
-            int nrt = System.Math.Max(0, System.Math.Min(n - 2, m));
-            for (int k = 0; k < System.Math.Max(nct, nrt); k++) {
+            int nct = Math.Min(m - 1, n);
+            int nrt = Math.Max(0, Math.Min(n - 2, m));
+            for (int k = 0; k < Math.Max(nct, nrt); k++) {
                 if (k < nct) {
 
                     // Compute the transformation for the k-th column and
@@ -170,7 +170,7 @@ namespace MCRA.Utils {
 
             // Set up the final bidiagonal matrix or order p.
 
-            int p = System.Math.Min(n, m + 1);
+            int p = Math.Min(n, m + 1);
             if (nct < n) {
                 s[nct] = A[nct][nct];
             }
@@ -246,7 +246,7 @@ namespace MCRA.Utils {
 
             int pp = p - 1;
             int iter = 0;
-            double eps = System.Math.Pow(2.0, -52.0);
+            double eps = Math.Pow(2.0, -52.0);
             while (p > 0) {
                 int k, kase;
 
@@ -266,7 +266,7 @@ namespace MCRA.Utils {
                     if (k == -1) {
                         break;
                     }
-                    if (System.Math.Abs(e[k]) <= eps * (System.Math.Abs(s[k]) + System.Math.Abs(s[k + 1]))) {
+                    if (Math.Abs(e[k]) <= eps * (Math.Abs(s[k]) + Math.Abs(s[k + 1]))) {
                         e[k] = 0.0;
                         break;
                     }
@@ -279,8 +279,8 @@ namespace MCRA.Utils {
                         if (ks == k) {
                             break;
                         }
-                        double t = (ks != p ? System.Math.Abs(e[ks]) : 0.0) + (ks != k + 1 ? System.Math.Abs(e[ks - 1]) : 0.0);
-                        if (System.Math.Abs(s[ks]) <= eps * t) {
+                        double t = (ks != p ? Math.Abs(e[ks]) : 0.0) + (ks != k + 1 ? Math.Abs(e[ks - 1]) : 0.0);
+                        if (Math.Abs(s[ks]) <= eps * t) {
                             s[ks] = 0.0;
                             break;
                         }
@@ -355,7 +355,7 @@ namespace MCRA.Utils {
                     case 3: {
                             // Calculate the shift.
 
-                            double scale = System.Math.Max(System.Math.Max(System.Math.Max(System.Math.Max(System.Math.Abs(s[p - 1]), System.Math.Abs(s[p - 2])), System.Math.Abs(e[p - 2])), System.Math.Abs(s[k])), System.Math.Abs(e[k]));
+                            double scale = Math.Max(Math.Max(Math.Max(Math.Max(Math.Abs(s[p - 1]), Math.Abs(s[p - 2])), Math.Abs(e[p - 2])), Math.Abs(s[k])), Math.Abs(e[k]));
                             double sp = s[p - 1] / scale;
                             double spm1 = s[p - 2] / scale;
                             double epm1 = e[p - 2] / scale;
@@ -365,7 +365,7 @@ namespace MCRA.Utils {
                             double c = (sp * epm1) * (sp * epm1);
                             double shift = 0.0;
                             if ((b != 0.0) | (c != 0.0)) {
-                                shift = System.Math.Sqrt(b * b + c);
+                                shift = Math.Sqrt(b * b + c);
                                 if (b < 0.0) {
                                     shift = -shift;
                                 }
@@ -496,7 +496,7 @@ namespace MCRA.Utils {
         /// </summary>
         /// <returns>U</returns>
         public virtual GeneralMatrix GetU() {
-            return new GeneralMatrix(U, m, System.Math.Min(m + 1, n));
+            return new GeneralMatrix(U, m, Math.Min(m + 1, n));
         }
 
         /// <summary>
@@ -520,7 +520,7 @@ namespace MCRA.Utils {
         /// </returns>
 
         public virtual double Condition() {
-            return s[0] / s[System.Math.Min(m, n) - 1];
+            return s[0] / s[Math.Min(m, n) - 1];
         }
 
         /// <summary>
@@ -528,8 +528,8 @@ namespace MCRA.Utils {
         /// </summary>
         /// <returns>Number of nonnegligible singular values.</returns>
         public virtual int Rank() {
-            double eps = System.Math.Pow(2.0, -52.0);
-            double tol = System.Math.Max(m, n) * s[0] * eps;
+            double eps = Math.Pow(2.0, -52.0);
+            double tol = Math.Max(m, n) * s[0] * eps;
             int r = 0;
             for (int i = 0; i < s.Length; i++) {
                 if (s[i] > tol) {

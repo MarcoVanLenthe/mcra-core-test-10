@@ -180,17 +180,17 @@ namespace MCRA.Utils {
         /// </param>
         /// <returns>     X that minimizes the two norm of Q*R*X-B.
         /// </returns>
-        /// <exception cref="System.ArgumentException"> Matrix row dimensions must agree.
+        /// <exception cref="ArgumentException"> Matrix row dimensions must agree.
         /// </exception>
-        /// <exception cref="System.SystemException"> Matrix is rank deficient.
+        /// <exception cref="SystemException"> Matrix is rank deficient.
         /// </exception>
 
         public virtual GeneralMatrix Solve(GeneralMatrix B) {
             if (B.RowDimension != m) {
-                throw new System.ArgumentException("GeneralMatrix row dimensions must agree.");
+                throw new ArgumentException("GeneralMatrix row dimensions must agree.");
             }
             if (!this.FullRank) {
-                throw new System.SystemException("Matrix is rank deficient.");
+                throw new SystemException("Matrix is rank deficient.");
             }
 
             // Copy right hand side

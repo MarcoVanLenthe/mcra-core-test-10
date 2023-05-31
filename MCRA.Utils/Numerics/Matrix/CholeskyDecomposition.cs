@@ -64,7 +64,7 @@ namespace MCRA.Utils {
                 }
                 d = A[j][j] - d;
                 _isPositiveDefinite = _isPositiveDefinite & (d > 0.0);
-                _l[j][j] = System.Math.Sqrt(System.Math.Max(d, 0.0));
+                _l[j][j] = Math.Sqrt(Math.Max(d, 0.0));
                 for (int k = j + 1; k < _n; k++) {
                     _l[j][k] = 0.0;
                 }

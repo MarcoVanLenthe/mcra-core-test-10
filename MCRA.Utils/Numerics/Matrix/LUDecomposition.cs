@@ -75,7 +75,7 @@ namespace MCRA.Utils {
 
                     // Most of the time is spent in the following dot product.
 
-                    int kmax = System.Math.Min(i, j);
+                    int kmax = Math.Min(i, j);
                     double s = 0.0;
                     for (int k = 0; k < kmax; k++) {
                         s += LUrowi[k] * LUcolj[k];
@@ -88,7 +88,7 @@ namespace MCRA.Utils {
 
                 int p = j;
                 for (int i = j + 1; i < m; i++) {
-                    if (System.Math.Abs(LUcolj[i]) > System.Math.Abs(LUcolj[p])) {
+                    if (Math.Abs(LUcolj[i]) > Math.Abs(LUcolj[p])) {
                         p = i;
                     }
                 }
@@ -201,12 +201,12 @@ namespace MCRA.Utils {
         /// <summary>Determinant</summary>
         /// <returns>     det(A)
         /// </returns>
-        /// <exception cref="System.ArgumentException">  Matrix must be square
+        /// <exception cref="ArgumentException">  Matrix must be square
         /// </exception>
 
         public virtual double Determinant() {
             if (m != n) {
-                throw new System.ArgumentException("Matrix must be square.");
+                throw new ArgumentException("Matrix must be square.");
             }
             double d = (double)pivsign;
             for (int j = 0; j < n; j++) {
@@ -220,17 +220,17 @@ namespace MCRA.Utils {
         /// </param>
         /// <returns>     X so that L*U*X = B(piv,:)
         /// </returns>
-        /// <exception cref="System.ArgumentException"> Matrix row dimensions must agree.
+        /// <exception cref="ArgumentException"> Matrix row dimensions must agree.
         /// </exception>
-        /// <exception cref="System.SystemException"> Matrix is singular.
+        /// <exception cref="SystemException"> Matrix is singular.
         /// </exception>
 
         public virtual GeneralMatrix Solve(GeneralMatrix B) {
             if (B.RowDimension != m) {
-                throw new System.ArgumentException("Matrix row dimensions must agree.");
+                throw new ArgumentException("Matrix row dimensions must agree.");
             }
             if (!this.IsNonSingular) {
-                throw new System.SystemException("Matrix is singular.");
+                throw new SystemException("Matrix is singular.");
             }
 
             // Copy right hand side with pivoting

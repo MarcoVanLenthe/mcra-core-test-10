@@ -89,7 +89,7 @@
         /// <param name="dateTime"></param>
         /// <returns></returns>
         public static int ToUnixTimeStamp(this DateTime dateTime) {
-            var unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            var unixTimestamp = (int)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             return unixTimestamp;
         }
 

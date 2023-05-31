@@ -15,7 +15,7 @@
         /// Initializes the composite progress state.
         /// </summary>
         public CompositeProgressState() 
-            : this(default(CancellationToken)){
+            : this(default){
         }
 
         /// <summary>

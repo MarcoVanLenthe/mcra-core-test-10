@@ -43,7 +43,7 @@
                 .Select(r => r.Value)
                 .Where(r => parentKeyExtractor(r) == null);
 
-            return roots.Select(r => hiearchyBuild<TKey, T>(r, keyExtractor, childrenLookup));
+            return roots.Select(r => hiearchyBuild(r, keyExtractor, childrenLookup));
         }
 
         /// <summary>

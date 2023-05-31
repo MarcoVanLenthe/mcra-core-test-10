@@ -106,7 +106,7 @@ namespace MCRA.Utils.ExtensionMethods {
         /// <param name="keyExtractor">key selector</param>
         /// <returns></returns>
         public static IEnumerable<T> Distinct<T>(this IEnumerable<T> source, Func<T, object> keyExtractor) {
-            return source.Distinct<T>(new KeyEqualityComparer<T>(keyExtractor));
+            return source.Distinct(new KeyEqualityComparer<T>(keyExtractor));
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace MCRA.Utils.ExtensionMethods {
                     return o;
                 }
             }
-            return default(T);
+            return default;
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace MCRA.Utils.ExtensionMethods {
                     return item;
                 }
             }
-            return default(T);
+            return default;
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace MCRA.Utils.ExtensionMethods {
                     return item;
                 }
             }
-            return default(T);
+            return default;
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace MCRA.Utils.ExtensionMethods {
             if (source.Count > 0) {
                 return source[source.Count - 1];
             } else {
-                return default(T);
+                return default;
             }
         }
 
