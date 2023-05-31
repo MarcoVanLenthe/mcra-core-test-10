@@ -1,6 +1,6 @@
 <img src="./Installation/Media/MCRAlogo.png" alt="MCRA logo" height="80"/>
 
-# **MCRA Core**
+# **MCRA Core 10 TEST for Zenodo releases**
 
 MCRA Core is an open source collection of models in the Monte Carlo Risk Assessment (MCRA) platform. These models can be run as actions independently using a command-line interrface (CLI) or, more conveniently, by using the MCRA web application of which the most recent version can be found at https://mcra.rivm.nl. The core contains all the modules that are available in the MCRA web application, like for example methods to calculate exposures, hazards and risk assessment. For a complete overview of all available modules see the [modular design documentation](https://mcra.rivm.nl/documentation).  
 
