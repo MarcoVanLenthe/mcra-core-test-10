@@ -56,15 +56,15 @@ namespace MCRA.Utils.TestReporting {
         /// <param name="length">The length of the string.</param>
         /// <returns>A random ANSI string e.g. "¤"`+`¥®qQN"!x:6UEohXoG_Y~G|"G}.c4rGnL*oBC{".</returns>
         public static string GetRandomAnsiString(int length = 256) {
-            StringBuilder builder = new StringBuilder();
+            var sb = new StringBuilder();
             char ch;
             for (int i = 0; i < length; i++) {
                 // Generate a character between ASCII code 32 and 175.
                 ch = Convert.ToChar(Convert.ToInt32(System.Math.Floor(143 * m_getrandom.NextDouble() + 32)));
-                builder.Append(ch);
+                sb.Append(ch);
             }
 
-            return builder.ToString();
+            return sb.ToString();
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace MCRA.Utils.TestReporting {
         /// <param name="length">The length of the string.</param>
         /// <returns>A random alphanumerical string e.g. "U3tHrA32MotMVO0hqa4Nl65cV".</returns>
         public static string GetRandomAlphaNumericalString(int length = 256) {
-            StringBuilder builder = new StringBuilder();
+            var sb = new StringBuilder();
             char ch;
             for (int i = 0; i < length; i++) {
                 int select = m_getrandom.Next(0, 3);
@@ -84,10 +84,10 @@ namespace MCRA.Utils.TestReporting {
                     default: ch = 'x'; break;
                 }
 
-                builder.Append(ch);
+                sb.Append(ch);
             }
 
-            return builder.ToString();
+            return sb.ToString();
         }
 
         /// <summary>

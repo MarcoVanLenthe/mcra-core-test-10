@@ -10,10 +10,10 @@ namespace MCRA.Utils.DataFileReading {
     public class TableDefinitionDataReader : IDataReader, IDisposable {
 
         private readonly IDataReader _internalReader;
-        private readonly List<ColumnDefinition> _columnDefinitions;
-        private readonly List<string> _columnNames;
-        private readonly Dictionary<string, int> _columnIndexes;
-        private readonly Dictionary<string, string> _internalColumnNameMappings;
+        private readonly List<ColumnDefinition> _columnDefinitions = new();
+        private readonly List<string> _columnNames = new();
+        private readonly Dictionary<string, int> _columnIndexes = new(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, string> _internalColumnNameMappings = new(StringComparer.OrdinalIgnoreCase);
         private readonly bool _useDefinitionColumnNames;
 
         /// <summary>
@@ -29,10 +29,6 @@ namespace MCRA.Utils.DataFileReading {
         ) {
             _internalReader = internalReader;
             _useDefinitionColumnNames = useDefinitionColumnNames;
-            _columnNames = new List<string>();
-            _columnIndexes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-            _internalColumnNameMappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            _columnDefinitions = new List<ColumnDefinition>();
             var headers = internalReader.GetColumnNames();
             for (int i = 0; i < headers.Count; i++) {
                 var columnDefinition = tableDefinition.FindColumnDefinitionByAlias(headers[i]) ?? null;

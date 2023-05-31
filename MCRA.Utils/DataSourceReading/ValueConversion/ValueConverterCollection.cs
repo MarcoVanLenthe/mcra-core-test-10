@@ -1,14 +1,7 @@
-namespace MCRA.Utils.DataSourceReading.ValueConversion {
+﻿namespace MCRA.Utils.DataSourceReading.ValueConversion {
     public class ValueConverterCollection {
 
-        private readonly Dictionary<Type, IValueConverter> _valueConverters;
-
-        /// <summary>
-        /// Creates a new <see cref="ValueConverterCollection"/> instance.
-        /// </summary>
-        public ValueConverterCollection() {
-            _valueConverters = new Dictionary<Type, IValueConverter>();
-        }
+        private readonly Dictionary<Type, IValueConverter> _valueConverters = new();
 
         /// <summary>
         /// Registers the specified <see cref="IValueConverter"/> to be used
