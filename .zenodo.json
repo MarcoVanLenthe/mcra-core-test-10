@@ -66,13 +66,13 @@
             "scheme": "doi",
             "identifier": "10.1016/j.fct.2020.111185",
             "relation": "describes",
-            "resource_type": "article"
+            "resource_type": "publication-article"
         },
         {
             "scheme": "doi",
             "identifier": "10.2903/sp.efsa.2021.EN-6515",
             "relation": "describes",
-            "resource_type": "report"
+            "resource_type": "publication-report"
         }
     ],
     "subjects": [
