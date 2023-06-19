@@ -8,52 +8,51 @@
     "upload_type": "software",
     "creators": [
         {
-            "name": "Kruisselbrink, Johannes",
+            "name": "Kruisselbrink, Johannes W.",
             "affiliation": "Wageningen University & Research, Biometris",
             "orcid": "0000-0003-1673-5725"
         },
         {
-            "name": "De Boer, Waldo",
+            "name": "Engel, Jasper",
             "affiliation": "Wageningen University & Research, Biometris",
-            "orcid": "0000-0002-0878-2559"
-        },
-        {
-            "name": "Van Lenthe, Marco",
-            "affiliation": "Wageningen University & Research, Biometris",
-            "orcid": "0000-0001-8335-5314"
+            "orcid": "0000-0001-6087-1711"
         },
         {
             "name": "Van Voorthuijsen, Tijmen",
             "affiliation": "Wageningen University & Research, Biometris"
         },
         {
-            "name": "Engel, Jasper",
+            "name": "De Boer, Waldo J.",
             "affiliation": "Wageningen University & Research, Biometris",
-            "orcid": "0000-0001-6087-1711"
-        }
-    ],
-    "contributors": [
+            "orcid": "0000-0002-0878-2559"
+        },
         {
-            "name": "Van Klaveren, Jacob",
-            "affiliation": "Dutch National Institute for Public Health and the Environment (RIVM)",
-            "orcid": "0000-0002-9171-7095",
-            "type": "Researcher"
+            "name": "Van Lenthe, Marco S.",
+            "affiliation": "Wageningen University & Research, Biometris",
+            "orcid": "0000-0001-8335-5314"
         },
         {
             "name": "Van der Voet, Hilko",
             "affiliation": "Wageningen University & Research",
-            "orcid": "0000-0003-0802-7382",
-            "type": "Other"
+            "orcid": "0000-0003-0802-7382"
         },
         {
             "name": "Van Donkersgoed, Gerda",
+            "affiliation": "Dutch National Institute for Public Health and the Environment (RIVM)"
+        },
+        {
+            "name": "Chen, Guangchao",
             "affiliation": "Dutch National Institute for Public Health and the Environment (RIVM)",
-            "type": "Other"
+            "orcid": "0000-0002-4315-5622"
         },
         {
             "name": "De Jong, Esther",
+            "affiliation": "Dutch National Institute for Public Health and the Environment (RIVM)"
+        },
+        {
+            "name": "Van Klaveren, Jacob",
             "affiliation": "Dutch National Institute for Public Health and the Environment (RIVM)",
-            "type": "Other"
+            "orcid": "0000-0002-9171-7095"
         }
     ],
     "related_identifiers": [
