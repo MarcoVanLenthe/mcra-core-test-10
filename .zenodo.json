@@ -113,6 +113,6 @@
     ],
     "notes": "The tool is implemented in C# (C Sharp). EU; en; .zip; supportmcra@rivm.nl",
     "communities": [
-        {"identifier": "efsa-pilot"}
+        {"identifier": "open-mcra-community"}
     ]
 }
